@@ -4,10 +4,10 @@
     //select the database
     mysqli_select_db($con,'agile');
     //select query
-    $sql = "Delete from users where id='$_GET[id]'";
+    $sql = "Delete from products where id='$_GET[id]'";
     //execute the query
     if($records=mysqli_query($con,$sql))
-        header("refresh:0.5; url=index.php");
+        header("refresh:0.5; url=display_products.php");
     else
         echo "Not Deleted";
 ?>
