@@ -35,7 +35,7 @@
 <body>
     <div>
         <?php
-                require 'header.php';
+                require 'admin_header.php';
                 //insert image
                 $msg = '';
                 if($_SERVER['REQUEST_METHOD']=='POST'){

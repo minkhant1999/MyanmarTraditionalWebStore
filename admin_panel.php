@@ -25,12 +25,17 @@
 </head>
 
 <body>
+<?php
+  include_once "admin_header.php";
+?>
 <div class="vertical-menu">
   <a href="insert_item_GUI.php" class="active">Add the products</a>
   <a href="delete_users_by_admin.php">Delete Users</a>
   <a href="#">Update products</a>
   <a href="display_products.php">Display the products</a>
 </div>
-
+<?php
+  require "footer.php";
+?>
 </body>
 </html>
