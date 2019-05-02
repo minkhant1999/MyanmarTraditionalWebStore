@@ -47,10 +47,11 @@
                 $name= mysqli_real_escape_string($con,$_POST['name']);
                 //submit category
                 $category= mysqli_real_escape_string($con,$_POST['category']);
-                //submit email
+                //submit price
                 $price=mysqli_real_escape_string($con,$_POST['price']);
-                //
-                $sql = "insert into products (name,category,price,image) values('$name','$price','$category','$image')";
+                //submit image
+                $price=mysqli_real_escape_string($con,$_POST['image']);
+                $sql = "insert into products (name,category,price,image) values('$name','$category','$price','$image')";
 
                 $stmt = mysqli_prepare($con,$sql);
 
