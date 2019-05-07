@@ -28,6 +28,8 @@
     <!--everything in body-->
     <div class="site-wrap">
         <?php
+            require "connection.php";
+            echo "connected!!!!!";
             require "header.php";
         ?>
 
@@ -70,7 +72,7 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
                         <a class="block-2-item" href="#">
                             <figure class="image">
-                                <img src="images/painting.jpg" alt="" class="img-fluid">
+                                <img width="800" height="300" src="images/painting.jpg" alt="" class="img-fluid">
                             </figure>
                             <div class="text">
                                 <span class="text-uppercase">Collections</span>

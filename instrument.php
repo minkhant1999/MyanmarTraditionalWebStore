@@ -88,6 +88,7 @@
                                     </figure>
                                     <div class="block-4-text p-4">
                                         <h3><a href="shop-single.html">Guitar</a></h3>
+                                        <button><a href="cart.php">Go to Cart</button>
                                         <p class="mb-0">Instument</p>
                                         <p class="text-primary font-weight-bold">US$2000</p>
                                     </div>
