@@ -30,7 +30,7 @@
         <?php
             require "connection.php";
             
-            require "header.php";
+            require "header2.php";
         ?>
 
         <!--body part start-->

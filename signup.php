@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col-xs-4 col-xs-offset-4">
                     <h1><b>SIGN UP</b></h1>
-                    <form method="post" action="user_registration_script.php">
+                    <form method="post" action="signup_script.php">
                         <!--Name-->
                         <div class="form-group">
                             <input type="text" class="form-control" name="name" placeholder="Name" required="true">

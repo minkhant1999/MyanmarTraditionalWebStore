@@ -43,7 +43,7 @@
                         </div>
                         <div class="panel-body">
                             <p>Login to make a purchase.</p>
-                            <form method="post" action="login_submit.php">
+                            <form method="POST" action="loginCheck.php">
                                 <div class="form-group">
                                     <input type="email" class="form-control" name="email" placeholder="Email"
                                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">

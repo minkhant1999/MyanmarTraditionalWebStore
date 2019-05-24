@@ -1,4 +1,6 @@
 <?php
+    function deleteUsers()
+    {
     //connect with mysql
     $con = mysqli_connect('localhost','root'.'');
     //select the database
@@ -10,4 +12,6 @@
         header("refresh:0.5; url=delete_users_by_admin.php");
     else
         echo "Not Deleted";
+    }
+    deleteUsers();
 ?>

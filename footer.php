@@ -10,9 +10,10 @@
                             <input type="submit" class="btn btn-sm btn-primary" value="Send">
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
-        </div>
+    </div>
     </div>
 </footer>

@@ -36,7 +36,7 @@
             //select the database
             mysqli_select_db($con,'agile');
             //select query
-            $sql = "select * from products";
+            $sql = "select * from tblproduct";
             //execute the query
             $records=mysqli_query($con,$sql);
 

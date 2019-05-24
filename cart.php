@@ -1,225 +1,83 @@
+<?php
+    session_start();
+    require 'connection.php';
+    if(!isset($_SESSION['email'])){
+        header('location: login.php');
+    }
+    $user_id=$_SESSION['id'];
+    $user_products_query="select it.id,it.name,it.price from users_items ut inner join items it on it.id=ut.item_id where ut.user_id='$user_id'";
+    $user_products_result=mysqli_query($con,$user_products_query) or die(mysqli_error($con));
+    $no_of_user_products= mysqli_num_rows($user_products_result);
+    $sum=0;
+    if($no_of_user_products==0){
+        //echo "Add items to cart first.";
+    ?>
+        <script>
+        window.alert("No items in the cart!!");
+        </script>
+    <?php
+    }else{
+        while($row=mysqli_fetch_array($user_products_result)){
+            $sum=$sum+$row['price']; 
+       }
+    }
+?>
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>Myanmar Traditional Web Store</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
-    <!--yangoods-->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=EB+Garamond:400|Karla:400,700,700i,400i|Raleway:600,700,700i,400i,400,200">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-    body {
-        font-family: Arial;
-        font-size: 17px;
-        padding: 8px;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
-
-    .row {
-        display: -ms-flexbox;
-        /* IE10 */
-        display: flex;
-        -ms-flex-wrap: wrap;
-        /* IE10 */
-        flex-wrap: wrap;
-        margin: 0 -16px;
-    }
-
-    .col-25 {
-        -ms-flex: 25%;
-        /* IE10 */
-        flex: 25%;
-    }
-
-    .col-50 {
-        -ms-flex: 50%;
-        /* IE10 */
-        flex: 50%;
-    }
-
-    .col-75 {
-        -ms-flex: 75%;
-        /* IE10 */
-        flex: 75%;
-    }
-
-    .col-25,
-    .col-50,
-    .col-75 {
-        padding: 0 16px;
-    }
-
-    .container {
-        background-color: #f2f2f2;
-        padding: 5px 20px 15px 20px;
-        border: 1px solid lightgrey;
-        border-radius: 3px;
-    }
-
-    input[type=text] {
-        width: 100%;
-        margin-bottom: 20px;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-    }
-
-    label {
-        margin-bottom: 10px;
-        display: block;
-    }
-
-    .icon-container {
-        margin-bottom: 20px;
-        padding: 7px 0;
-        font-size: 24px;
-    }
-
-    .btn {
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px;
-        margin: 10px 0;
-        border: none;
-        width: 100%;
-        border-radius: 3px;
-        cursor: pointer;
-        font-size: 17px;
-    }
-
-    .btn:hover {
-        background-color: #45a049;
-    }
-
-    a {
-        color: #2196F3;
-    }
-
-    hr {
-        border: 1px solid lightgrey;
-    }
-
-    span.price {
-        float: right;
-        color: grey;
-    }
-
-    /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
-    @media (max-width: 800px) {
-        .row {
-            flex-direction: column-reverse;
-        }
-
-        .col-25 {
-            margin-bottom: 20px;
-        }
-    }
-    </style>
-</head>
-
-<body>
-
-    <?php
-            require "header.php";
-    ?>
-    <div class="row">
-        <div class="col-75">
+    <head>
+        <link rel="shortcut icon" href="img/lifestyleStore.png" />
+        <title>Minjin Store</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- latest compiled and minified CSS -->
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
+        <!-- jquery library -->
+        <script type="text/javascript" src="bootstrap/js/jquery-3.2.1.min.js"></script>
+        <!-- Latest compiled and minified javascript -->
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <!-- External CSS -->
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+    </head>
+    <body>
+        <div>
+            <?php 
+               require 'header.php';
+            ?>
+            <br>
             <div class="container">
-                <form action="/action_page.php">
-
-                    <div class="row">
-                        <div class="col-50">
-                            <h3>Billing Address</h3>
-                            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-                            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                            <input type="text" id="email" name="email" placeholder="john@example.com">
-                            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-                            <label for="city"><i class="fa fa-institution"></i> City</label>
-                            <input type="text" id="city" name="city" placeholder="New York">
-
-                            <div class="row">
-                                <div class="col-50">
-                                    <label for="state">State</label>
-                                    <input type="text" id="state" name="state" placeholder="NY">
-                                </div>
-                                <div class="col-50">
-                                    <label for="zip">Zip</label>
-                                    <input type="text" id="zip" name="zip" placeholder="10001">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-50">
-                            <h3>Payment</h3>
-                            <label for="fname">Accepted Cards</label>
-                            <div class="icon-container">
-                                <i class="fa fa-cc-visa" style="color:navy;"></i>
-                                <i class="fa fa-cc-amex" style="color:blue;"></i>
-                                <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                                <i class="fa fa-cc-discover" style="color:orange;"></i>
-                            </div>
-                            <label for="cname">Name on Card</label>
-                            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-                            <label for="ccnum">Credit card number</label>
-                            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-                            <label for="expmonth">Exp Month</label>
-                            <input type="text" id="expmonth" name="expmonth" placeholder="September">
-                            <div class="row">
-                                <div class="col-50">
-                                    <label for="expyear">Exp Year</label>
-                                    <input type="text" id="expyear" name="expyear" placeholder="2018">
-                                </div>
-                                <div class="col-50">
-                                    <label for="cvv">CVV</label>
-                                    <input type="text" id="cvv" name="cvv" placeholder="352">
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <label>
-                        <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-                    </label>
-                    <input type="submit" value="Continue to checkout" class="btn">
-                </form>
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <th>Item Number</th><th>Item Name</th><th>Price</th><th></th>
+                        </tr>
+                       <?php 
+                        $user_products_result=mysqli_query($con,$user_products_query) or die(mysqli_error($con));
+                        $no_of_user_products= mysqli_num_rows($user_products_result);
+                        $counter=1;
+                       while($row=mysqli_fetch_array($user_products_result)){
+                           
+                         ?>
+                        <tr>
+                            <th><?php echo $counter ?></th><th><?php echo $row['name']?></th><th><?php echo $row['price']?></th>
+                            <th><a href='cart_remove.php?id=<?php echo $row['id'] ?>'>Remove</a></th>
+                        </tr>
+                       <?php $counter=$counter+1;}?>
+                        <tr>
+                            <th></th><th>Total</th><th>SGD <?php echo $sum;?>/-</th><th><a href="payment.php?id=<?php echo $user_id?>" class="btn btn-primary">Confirm Order</a></th>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+            <br><br><br><br><br><br><br><br><br><br>
+            <footer class="footer">
+               <div class="container">
+               <center>
+                <?php
+                    require 'footer.php';
+                ?>
+               </center>
+               </div>
+           </footer>
         </div>
-        <div class="col-25">
-            <div class="container">
-                <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span>
-                </h4>
-                <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-                <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-                <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-                <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-                <hr>
-                <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-            </div>
-        </div>
-    </div>
-
-</body>
-
+    </body>
 </html>

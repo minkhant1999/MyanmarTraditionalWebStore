@@ -29,10 +29,10 @@
   include_once "admin_header.php";
 ?>
 <div class="vertical-menu">
-  <a href="insert_item_GUI.php" class="active">Add the products</a>
-  <a href="delete_users_by_admin.php">Delete Users</a>
-  <a href="#">Update products</a>
-  <a href="display_products.php">Display the products</a>
+  <a href="insert_item_GUI.php" class="active">Add the products</a><br>
+  <a href="delete_users_by_admin.php">Delete Users</a><br>
+  <a href="#">Update products</a><br>
+  <a href="display_products.php">Display the products</a><br>
 </div>
 <?php
   require "footer.php";
