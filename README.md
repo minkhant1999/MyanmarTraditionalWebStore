@@ -19,3 +19,5 @@ Intel i7-7700HQ @2.80GHz
 
 To run this project, place all the files in code editor (Visual studio code) and run
 Xampp server is needed for database
+
+No license applied.
