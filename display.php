@@ -1,8 +1,9 @@
 <?php
+    require_once("dbcontroller.php");
     //connect with mysql
-    $con = mysqli_connect('localhost','root'.'');
+    //$con = mysqli_connect('localhost','root'.'');
     //select the database
-    mysqli_select_db($con,'agile');
+    //mysqli_select_db($con,'agile');
     //select query
     $sql = "Delete from products where id='$_GET[id]'";
     //execute the query

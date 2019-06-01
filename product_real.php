@@ -76,13 +76,12 @@ switch($_GET["action"]) {
             require "header2.php";
         ?>
     <!--Shopping cart part--------------------->
-	
+
     <!-- Products part------------>
     <div id="product-grid">
         <div class="txt-heading">Products</div>
         <?php
-	//Here is the point xD
-	$product_array = $db_handle->runQuery("SELECT * FROM tblproduct where category like 'Others'");
+	$product_array = $db_handle->runQuery("SELECT * FROM tblproduct ORDER BY id ASC	");
 	if (!empty($product_array)) { 
 		foreach($product_array as $key=>$value){
 	?>

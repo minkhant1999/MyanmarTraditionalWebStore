@@ -76,10 +76,10 @@ switch($_GET["action"]) {
             require "header2.php";
         ?>
     <!--Shopping cart part--------------------->
-	
+
     <!-- Products part------------>
     <div id="product-grid">
-        <div class="txt-heading">Products</div>
+        <div class="txt-heading">Sale Products</div>
         <?php
 	//Here is the point xD
 	$product_array = $db_handle->runQuery("SELECT * FROM tblproduct where category like 'Others'");
@@ -91,8 +91,10 @@ switch($_GET["action"]) {
                 <div class="product-image"><img src="<?php echo $product_array[$key]["image"]; ?>" width="300"
                         height="300"></div>
                 <div class="product-tile-footer">
+                    <h1>50% off</h1>
                     <div class="product-title"><?php echo $product_array[$key]["name"]; ?></div>
-                    <div class="product-price"><?php echo "$".$product_array[$key]["price"]; ?></div>
+                    
+                    <div class="product-price"><?php echo "$".$product_array[$key]["price"]/2; ?></div>
                     <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1"
                             size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
                 </div>

@@ -1,7 +1,11 @@
+<?php
+    session_start();
+    session_unset();
+    session_destroy();
+?>
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html>
+    <head>
     <title>Myanmar Traditional Web Store</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,21 +25,27 @@
     <link rel="stylesheet" href="css/aos.css">
 
     <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div>
+            <?php
+                require 'header.php';
+            ?>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body">
+                                <p>You have been logged out. <a href="login.php">Login again.</a></p>
+                                <meta http-equiv="refresh" content="0.1;url=index.php" />;
 
-</head>
-
-<body>
-<?php
-  include_once "admin_header.php";
-?>
-<div class="vertical-menu">
-  <a href="insert_item_GUI.php" class="active">Add the products</a><br>
-  <a href="delete_users_by_admin.php">Delete Users</a><br>
-
-  <a href="display_products.php">Display the products</a><br>
-</div>
-<?php
-  require "footer.php";
-?>
-</body>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

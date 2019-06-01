@@ -40,4 +40,7 @@
         header('location: products.php');
     }
     
+
+    
+    
  ?>

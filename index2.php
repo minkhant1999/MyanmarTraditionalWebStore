@@ -30,7 +30,7 @@
         <?php
             require "connection.php";
             
-            require "header.php";
+            require "header2.php";
         ?>
 
         <!--body part start-->
@@ -59,6 +59,7 @@
                             <div class="text">
                                 <span class="text-uppercase">Collections</span>
                                 <h3>Musical Instruments</h3>
+                                <input type="radio" name="gender" id="male" value="male">
                             </div>
                         </a>
                     </div>

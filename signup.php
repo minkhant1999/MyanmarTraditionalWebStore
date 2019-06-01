@@ -1,11 +1,3 @@
-<?php
-    require 'connection.php';
-    session_start();
-    if(isset($_SESSION['email'])){
-        header('location: products.php');
-    }
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -42,10 +34,11 @@
             <div class="row">
                 <div class="col-xs-4 col-xs-offset-4">
                     <h1><b>SIGN UP</b></h1>
-                    <form method="post" action="user_registration_script.php">
+                    <form method="post" action="signup_script.php">
                         <!--Name-->
                         <div class="form-group">
-                            <input type="text" class="form-control" name="name" placeholder="Name" required="true">
+                            <input type="text" class="form-control" name="name" placeholder="Name" required="true"
+                            pattern="[a-z]{1,15}">
                         </div>
                         <!--email-->
                         <div class="form-group">
@@ -57,6 +50,16 @@
                             <input type="password" class="form-control" name="password"
                                 placeholder="Password(min. 6 characters)" required="true" pattern=".{6,}">
                         </div>
+                        <!--Contact-->
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="contact"
+                                placeholder="Phone Number(+65)" required="true"><!-- pattern=".{8,}"-->
+                        </div>
+                        <!--Postal code-->
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="postal_code"
+                                placeholder="Postal Code" required="true" pattern=".{6,}">
+                        </div>
                         <!--Sign up botton-->
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Sign Up">
@@ -66,16 +69,6 @@
             </div>
         </div>
         <br><br><br><br><br><br>
-        <footer class="footer">
-            <div class="container">
-                <center>
-                    <?php
-                    require 'footer.php';
-                ?>
-                </center>
-            </div>
-        </footer>
-
     </div>
 </body>
 
