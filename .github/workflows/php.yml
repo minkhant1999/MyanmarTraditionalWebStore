@@ -9,3 +9,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+
+    - name: PHP Syntax Checker (Lint)
+      uses: StephaneBour/actions-php-lint@7.3
+      
+    - name: PHP Code Style Fixer (php-cs-fixer)
+      uses: StephaneBour/actions-php-cs-fixer@1.0
+    
